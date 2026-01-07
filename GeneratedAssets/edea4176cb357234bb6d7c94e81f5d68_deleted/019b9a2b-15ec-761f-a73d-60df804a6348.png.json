@@ -1,0 +1,20 @@
+{
+    "asset": "edea4176cb357234bb6d7c94e81f5d68",
+    "fileName": "019b9a2b-15ec-761f-a73d-60df804a6348.png",
+    "prompt": "Pixel art 2D RPG character sprite, front view.\r\nChibi proportions, big head, small body.\r\nBlonde hair with a single spiky lock pointing to the right.\r\nSimple cute face with two black pixel eyes.\r\nGreen shirt, dark blue pants, dark shoes.\r\n\r\nSTRICT pixel art style.\r\nLarge visible pixels.\r\nLow resolution look.\r\nSprite should look like it was drawn in 16x16 pixels.\r\n\r\nNo gradients.\r\nNo shading.\r\nFlat colors only.\r\nBlack pixel outline.\r\nLimited color palette (8–16 colors max).\r\n\r\nCentered character.\r\nIdle pose.\r\nTransparent background.\r\nGame-ready 2D sprite.\r\n",
+    "negativePrompt": "blurry,\r\nsmooth,\r\nanti-aliasing,\r\nhigh resolution,\r\ndetailed illustration,\r\npainting,\r\nrealistic,\r\n3d,\r\nsoft shading,\r\ngradients,\r\nbackground,\r\nscene,\r\nenvironment,\r\ntext,\r\nlogo,\r\nwatermark\r\n",
+    "model": "5b5b2af1-6ea4-4266-b087-cc9f3bf4f450",
+    "modelName": "Flux.1 Dev",
+    "customSeed": -1,
+    "w3CTraceId": "a4202826abe60f1eb41bbc13571c63a3",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

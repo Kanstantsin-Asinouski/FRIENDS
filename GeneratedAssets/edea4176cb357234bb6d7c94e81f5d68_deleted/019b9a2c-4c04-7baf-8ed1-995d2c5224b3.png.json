@@ -1,0 +1,20 @@
+{
+    "asset": "edea4176cb357234bb6d7c94e81f5d68",
+    "fileName": "019b9a2c-4c04-7baf-8ed1-995d2c5224b3.png",
+    "prompt": "Retro pixel art 2D RPG character sprite.\r\nVERY low detail.\r\nExtremely simple design.\r\n\r\nChibi character with oversized head.\r\nBlonde hair with one spiky lock.\r\nTwo black square pixel eyes only.\r\nNo mouth or nose.\r\n\r\nGreen shirt.\r\nDark pants.\r\nDark shoes.\r\n\r\nLooks like classic 16-bit RPG sprite.\r\nLooks like it fits perfectly in a 16x16 or 24x24 grid.\r\n\r\nHuge chunky pixels.\r\nVery blocky shapes.\r\nMinimal detail.\r\n\r\nBlack pixel outline.\r\nFlat colors only.\r\n8 colors max.\r\n\r\nCentered.\r\nIdle pose.\r\nTransparent background.\r\n",
+    "negativePrompt": "blurry,\r\nsmooth,\r\nanti-aliasing,\r\nhigh resolution,\r\ndetailed illustration,\r\npainting,\r\nrealistic,\r\n3d,\r\nsoft shading,\r\ngradients,\r\nbackground,\r\nscene,\r\nenvironment,\r\ntext,\r\nlogo,\r\nwatermark\r\n",
+    "model": "5b5b2af1-6ea4-4266-b087-cc9f3bf4f450",
+    "modelName": "Flux.1 Dev",
+    "customSeed": -1,
+    "w3CTraceId": "39d5ec50ae76f950dd4ef5066e806dfa",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

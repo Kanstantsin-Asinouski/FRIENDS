@@ -1,0 +1,20 @@
+{
+    "asset": "edea4176cb357234bb6d7c94e81f5d68",
+    "fileName": "019b9a51-a90e-7fc7-845c-765a56608fe4.png",
+    "prompt": "Sci-fi pixel art game character sprite.\r\n\r\nONLY humanoid character.\r\nONLY one character.\r\nNo vehicles. No robots. No props. No weapons.\r\n\r\nEXTREMELY simple design.\r\nVery low detail.\r\nPrimitive pixel art.\r\n\r\nCharacter wearing a simple sci-fi space suit.\r\nMinimal astronaut suit design.\r\nClosed helmet.\r\nNo reflections.\r\nNo glass shine.\r\n\r\nStanding upright.\r\nNeutral idle pose.\r\nArms relaxed at sides.\r\nFull body visible.\r\nFacing forward.\r\n\r\nBlocky square shapes.\r\nHard pixel edges.\r\nNo smooth curves.\r\nNo gradients.\r\nNo shading.\r\n\r\nFlat colors only.\r\nVery limited color palette (4–6 colors total).\r\n\r\nLooks like it was drawn pixel by pixel by hand.\r\nStrict pixel grid.\r\nLooks perfect at 16x16 or 24x24 resolution.\r\n\r\nGame-ready sprite.\r\nCentered.\r\nTransparent background.\r\n",
+    "negativePrompt": "realistic,\r\nhigh detail,\r\nconcept art,\r\nillustration,\r\nlighting,\r\nglow,\r\nreflections,\r\nglass,\r\nmetal shine,\r\nsoft shadows,\r\ngradients,\r\nsmooth,\r\nanti-aliasing,\r\n3d,\r\nrobot,\r\nmech,\r\nvehicle,\r\nweapon,\r\nbackground,\r\nscene\r\n",
+    "model": "448f5b1c-477a-4514-8335-7bc82aba208e",
+    "modelName": "Sci-Fi",
+    "customSeed": -1,
+    "w3CTraceId": "32fcddebc0baef1b26434b1d8874dff1",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}
