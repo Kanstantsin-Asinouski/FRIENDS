@@ -1,0 +1,20 @@
+{
+    "asset": "edea4176cb357234bb6d7c94e81f5d68",
+    "fileName": "019b9a3b-9c55-76ac-becc-4f0510da2c02.png",
+    "prompt": "EXTREMELY primitive pixel art.\r\nLooks like it was drawn by hand pixel-by-pixel.\r\nNo smooth shapes.\r\nNo soft edges.\r\nEvery shape made of square pixels.\r\r\nChibi character with oversized head.\r\nBlonde hair with one spiky lock.\r\nTwo black square pixel eyes only.\r\nNo mouth or nose.\r\n\r\nGreen shirt.\r\nDark pants.\r\nDark shoes.\r\n\r\nLooks like classic 16-bit RPG sprite.\r\nLooks like it fits perfectly in a 16x16 or 24x24 grid.\r\n\r\nHuge chunky pixels.\r\nVery blocky shapes.\r\nMinimal detail.\r\n\r\nBlack pixel outline.\r\nFlat colors only.\r\n8 colors max.\r\n\r\nCentered.\r\nIdle pose.\r\nTransparent background.\r\n",
+    "negativePrompt": "blurry,\r\nsmooth,\r\nanti-aliasing,\r\nhigh resolution,\r\ndetailed illustration,\r\npainting,\r\nrealistic,\r\n3d,\r\nsoft shading,\r\ngradients,\r\nbackground,\r\nscene,\r\nenvironment,\r\ntext,\r\nlogo,\r\nwatermark\r\n",
+    "model": "409229d8-9653-42a8-b069-824d11ef6762",
+    "modelName": "8-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "ccd0d006552e35418ace9858e5da9b36",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

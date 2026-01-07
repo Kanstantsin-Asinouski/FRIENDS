@@ -1,0 +1,20 @@
+{
+    "asset": "edea4176cb357234bb6d7c94e81f5d68",
+    "fileName": "019b9a48-85c9-7d35-94b3-9daf1cfa8e4d.png",
+    "prompt": "ONLY humanoid character.\r\nNO vehicles.\r\nNO objects.\r\nNO robots.\r\nNO animals.\r\nNO props.\r\n\n16-bit pixel art RPG character sprite.\r\n\r\nClassic SNES / Game Boy Advance style.\r\nHand-drawn pixel art.\r\nClean but blocky.\r\n\r\nClearly visible square pixels.\r\nNo smooth curves.\r\nNo soft edges.\r\n\r\nChibi character with oversized head.\r\nSimple blocky body.\r\n\r\nBlonde hair with one simple spiky lock.\r\nHair drawn using large pixel clusters.\r\nTwo black rectangular pixel eyes.\r\nNo mouth.\r\nNo nose.\r\n\r\nGreen shirt.\r\nDark pants.\r\nDark shoes.\r\n\r\nFlat colors only.\r\nVery limited palette (6–10 colors).\r\nMinimal shading (only 1 shade per color max).\r\n\r\nStrict pixel grid.\r\nLooks perfect when resized to 24x24 or 24x32.\r\nGame-ready sprite.\r\n\r\nCentered.\r\nIdle pose.\r\nTransparent background.\r\n\r\n",
+    "negativePrompt": "anti-aliasing,\r\nsmooth,\r\nhigh resolution,\r\nmodern pixel art,\r\nsoft shading,\r\nlighting effects,\r\ngradients,\r\nillustration,\r\nconcept art,\r\n3d,\r\nrealistic,\r\nbackground\r\n\r\n",
+    "model": "448f5b1c-477a-4514-8335-7bc82aba208e",
+    "modelName": "Sci-Fi",
+    "customSeed": -1,
+    "w3CTraceId": "bcdd56e2ae0b8af47465e97ff5712826",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}
