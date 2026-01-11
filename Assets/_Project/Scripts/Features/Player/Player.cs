@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public bool IsRunning()
     {
         return isRunning;
+
     }
 
     public Vector3 GetPlayerPosition()
