@@ -302,6 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1147598895}
+  - component: {fileID: 1147598896}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -325,6 +326,18 @@ Transform:
   - {fileID: 1839480681}
   m_Father: {fileID: 1625321713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -160}
+--- !u!114 &1147598896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147598894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c5545379f50844b84ffa4dab62dae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sword
 --- !u!1 &1190670538
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1625321713}
+  - component: {fileID: 1625321714}
   m_Layer: 0
   m_Name: ActiveWeapon
   m_TagString: Untagged
@@ -441,6 +455,19 @@ Transform:
   - {fileID: 1147598895}
   m_Father: {fileID: 2054323909}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1625321714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625321712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e2cbcb6249b894c87138b4b8308762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActiveWeapon
+  sword: {fileID: 1147598896}
 --- !u!1 &1636947573
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +643,7 @@ GameObject:
   - component: {fileID: 1839480681}
   - component: {fileID: 1839480682}
   - component: {fileID: 1839480683}
+  - component: {fileID: 1839480684}
   m_Layer: 0
   m_Name: SwordVisual
   m_TagString: Untagged
@@ -719,6 +747,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1839480684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839480680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045ca8ab009d20842be094872b0a6585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SwordVisual
+  sword: {fileID: 1147598896}
 --- !u!1 &1993689687
 GameObject:
   m_ObjectHideFlags: 0
