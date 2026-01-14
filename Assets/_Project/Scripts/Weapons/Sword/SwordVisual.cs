@@ -6,6 +6,11 @@ public class SwordVisual : MonoBehaviour
     private Animator animator;
     private const string ATTACK = "Attack";
 
+    public void TriggerEndAttackAnimation()
+    {
+        sword.AttackColliderTurnOff();
+    }
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -19,5 +24,5 @@ public class SwordVisual : MonoBehaviour
     private void Sword_OnSwordSwing(object sender, System.EventArgs e)
     {
         animator.SetTrigger(ATTACK);
-    }
+    }    
 }

@@ -1,22 +1,27 @@
 ﻿using System;
 using UnityEngine;
 
+[SelectionBase]
 public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
-    [SerializeField] private float movingSpeed = 5f;
+    [SerializeField] private float _movingSpeed = 5f;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D _rigidBody;
 
-    private readonly float minMovingSpeed = 0.1f;
-    private bool isRunning = false;
-    private Vector2 inputVector;
+    private readonly float _minMovingSpeed = 0.1f;
+    private bool _isRunning = false;
+    private Vector2 _inputVector;
 
     public bool IsRunning()
     {
-        return isRunning;
+        return _isRunning;
+    }
 
+    public void Update()
+    {
+        _inputVector = GameInput.Instance.GetMovementVector();
     }
 
     public Vector3 GetPlayerPosition()
@@ -28,7 +33,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        rb = GetComponent<Rigidbody2D>();
+        _rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -39,11 +44,6 @@ public class Player : MonoBehaviour
     private void GameInput_OnPlayerAttack(object sender, EventArgs e)
     {
         ActiveWeapon.Instance.GetActiveWeapon().Attack();
-    }
-
-    public void Update()
-    {
-        inputVector = GameInput.Instance.GetMovementVector();
     }
 
     private void FixedUpdate()
@@ -59,15 +59,15 @@ public class Player : MonoBehaviour
 
     private void HandleMovement()
     {
-        rb.MovePosition(rb.position + inputVector * (movingSpeed * Time.fixedDeltaTime));
+        _rigidBody.MovePosition(_rigidBody.position + _inputVector * (_movingSpeed * Time.fixedDeltaTime));
 
-        if (Mathf.Abs(inputVector.x) > minMovingSpeed || Mathf.Abs(inputVector.y) > minMovingSpeed)
+        if (Mathf.Abs(_inputVector.x) > _minMovingSpeed || Mathf.Abs(_inputVector.y) > _minMovingSpeed)
         {
-            isRunning = true;
+            _isRunning = true;
         }
         else
         {
-            isRunning = false;
+            _isRunning = false;
         }
     }
 }

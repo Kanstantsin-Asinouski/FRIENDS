@@ -4,16 +4,16 @@ using Friends.Utils;
 
 public class EnemyAi : MonoBehaviour
 {
-    [SerializeField] private State startingState;
-    [SerializeField] private float roamingDistanceMax = 7f;
-    [SerializeField] private float roamingDistanceMin = 3f;
-    [SerializeField] private float roamingTimeMax = 2f;
+    [SerializeField] private State _startingState;
+    [SerializeField] private float _roamingDistanceMax = 7f;
+    [SerializeField] private float _roamingDistanceMin = 3f;
+    [SerializeField] private float _roamingTimeMax = 2f;
 
-    private NavMeshAgent navMeshAgent;
-    private State state;
-    private float roamingTime;
-    private Vector3 roamPosition;
-    private Vector3 startingPosition;
+    private NavMeshAgent _navMeshAgent;
+    private State _state;
+    private float _roamingTime;
+    private Vector3 _roamPosition;
+    private Vector3 _startingPosition;
 
     private enum State
     {
@@ -22,27 +22,27 @@ public class EnemyAi : MonoBehaviour
 
     private void Awake()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
 
-        state = startingState;
+        _state = _startingState;
 
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
+        _navMeshAgent.updateRotation = false;
+        _navMeshAgent.updateUpAxis = false;
     }
 
     private void Update()
     {
-        switch (state)
+        switch (_state)
         {
             default:
             case State.Roaming:
 
-                roamingTime -= Time.deltaTime;
+                _roamingTime -= Time.deltaTime;
 
-                if (roamingTime < 0)
+                if (_roamingTime < 0)
                 {
                     Roaming();
-                    roamingTime = roamingTimeMax;
+                    _roamingTime = _roamingTimeMax;
                 }
 
                 break;
@@ -51,15 +51,15 @@ public class EnemyAi : MonoBehaviour
 
     private void Roaming()
     {
-        startingPosition = transform.position;
-        roamPosition = GetRoamingPosition();
-        ChangeFacingDirection(startingPosition, roamPosition);
-        navMeshAgent.SetDestination(roamPosition);
+        _startingPosition = transform.position;
+        _roamPosition = GetRoamingPosition();
+        ChangeFacingDirection(_startingPosition, _roamPosition);
+        _navMeshAgent.SetDestination(_roamPosition);
     }
 
     private Vector3 GetRoamingPosition()
     {
-        return startingPosition + FriendsUtils.GetRandomDir() * Random.Range(roamingDistanceMin, roamingDistanceMax);
+        return _startingPosition + FriendsUtils.GetRandomDir() * Random.Range(_roamingDistanceMin, _roamingDistanceMax);
     }
 
     private void ChangeFacingDirection(Vector3 sourcePosition, Vector3 targetPosition)
