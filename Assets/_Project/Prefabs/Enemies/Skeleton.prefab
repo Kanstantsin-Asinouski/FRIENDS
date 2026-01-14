@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2428461861544850273}
   - component: {fileID: 2603209494871039470}
+  - component: {fileID: 3299475160660157581}
   m_Layer: 0
   m_Name: SkeletonVisual
   m_TagString: Untagged
@@ -92,6 +93,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 1
+--- !u!95 &3299475160660157581
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174842224747190043}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4302e127a5ca5345a2533ec5ec7aff4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2125120440023816143
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +128,7 @@ GameObject:
   - component: {fileID: 3199426763290017675}
   - component: {fileID: 2461901873458616437}
   - component: {fileID: 7687162777907215640}
-  - component: {fileID: -7684356961839150757}
+  - component: {fileID: 2564244857797858550}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -236,32 +259,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4d62bc1f149094cb0bc4506d7571a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
-  startingState: 1
-  roamingDistanceMax: 7
-  roamingDistanceMin: 3
-  roamingTimeMax: 2
---- !u!95 &-7684356961839150757
-Animator:
-  serializedVersion: 7
+  _startingState: 0
+  _roamingDistanceMax: 7
+  _roamingDistanceMin: 3
+  _roamingTimeMax: 2
+--- !u!114 &2564244857797858550
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125120440023816143}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c4302e127a5ca5345a2533ec5ec7aff4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0065d9757e6098f44b0aeaabc121aced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
+  _maxHealth: 20
 --- !u!1 &5014079340184835364
 GameObject:
   m_ObjectHideFlags: 0
