@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2270b86e33db3c7439e7277907e3ce8e
+guid: 720f1e9458905f04988a3ce2bd30d5c0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Death_0
+      name: Take Hit_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7a59570034c0e94db28a4a2dfe4bf23
-      internalID: -2077626560
+      spriteID: 5f3263ad18470c246a32a771f53c54c4
+      internalID: -1636398783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_1
+      name: Take Hit_1
       rect:
         serializedVersion: 2
         x: 150
@@ -147,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0f0d7ae45bec75459134bbce979bb79
-      internalID: 541389117
+      spriteID: 06409edb36dce6a4e92c6f6175eff5a3
+      internalID: -2027754830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_2
+      name: Take Hit_2
       rect:
         serializedVersion: 2
         x: 300
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46b2adfbac69b2141b3b5745dbe1134e
-      internalID: -801450826
+      spriteID: 34aea66a22474454e8c995ab7756f0cf
+      internalID: 1059131444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_3
+      name: Take Hit_3
       rect:
         serializedVersion: 2
         x: 450
@@ -191,8 +191,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a15d4cd1a5efcd49afa1f392c758c27
-      internalID: -1661127785
+      spriteID: 0c178549df6eb3f4cb9f4d1a73b30399
+      internalID: 2007076694
       vertices: []
       indices: 
       edges: []
@@ -213,10 +213,10 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":150.0,"y":150.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.33000001311302187},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Death_0: -2077626560
-      Death_1: 541389117
-      Death_2: -801450826
-      Death_3: -1661127785
+      Take Hit_0: -1636398783
+      Take Hit_1: -2027754830
+      Take Hit_2: 1059131444
+      Take Hit_3: 2007076694
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

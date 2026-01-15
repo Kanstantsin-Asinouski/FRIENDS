@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class ActiveWeapon : MonoBehaviour
 {
-    [SerializeField] private Sword sword;
+    [SerializeField] private Sword _sword;
 
     public static ActiveWeapon Instance { get; private set; }
+
+    public Sword GetActiveWeapon()
+    {
+        return _sword;
+    }
 
     private void Awake()
     {
         Instance = this;
-    }
-
-    public Sword GetActiveWeapon()
-    {
-        return sword;
     }
 
     private void Update()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2428461861544850273}
   - component: {fileID: 2603209494871039470}
   - component: {fileID: 3299475160660157581}
+  - component: {fileID: 961886067707744074}
   m_Layer: 0
   m_Name: SkeletonVisual
   m_TagString: Untagged
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1058622276, guid: d2845bdd45ca45846ae89ce7c6fb6a74, type: 3}
+  m_Sprite: {fileID: -2007584596, guid: 40a514ec7a02cc24eb0fc92c7ff84fbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,6 +116,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &961886067707744074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174842224747190043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f262ca506e87e1e429715af773d4f3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkeletonVisual
 --- !u!1 &2125120440023816143
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +275,9 @@ MonoBehaviour:
   _startingState: 0
   _roamingDistanceMax: 7
   _roamingDistanceMin: 3
-  _roamingTimeMax: 2
+  _roamingTimerMax: 2
+  _isChasing: 0
+  _isAttackingEnemy: 0
 --- !u!114 &2564244857797858550
 MonoBehaviour:
   m_ObjectHideFlags: 0
