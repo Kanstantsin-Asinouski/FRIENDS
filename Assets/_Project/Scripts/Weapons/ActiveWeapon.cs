@@ -5,12 +5,7 @@ public class ActiveWeapon : MonoBehaviour
     [SerializeField] private Sword _sword;
 
     public static ActiveWeapon Instance { get; private set; }
-
-    public Sword GetActiveWeapon()
-    {
-        return _sword;
-    }
-
+    
     private void Awake()
     {
         Instance = this;
@@ -19,6 +14,11 @@ public class ActiveWeapon : MonoBehaviour
     private void Update()
     {
         FollowMousePosition();
+    }
+
+    public Sword GetActiveWeapon()
+    {
+        return _sword;
     }
 
     private void FollowMousePosition()

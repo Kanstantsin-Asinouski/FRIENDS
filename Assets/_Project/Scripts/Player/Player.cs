@@ -14,22 +14,6 @@ public class Player : MonoBehaviour
     private bool _isRunning = false;
     private Vector2 _inputVector;
 
-    public bool IsRunning()
-    {
-        return _isRunning;
-    }
-
-    public void Update()
-    {
-        _inputVector = GameInput.Instance.GetMovementVector();
-    }
-
-    public Vector3 GetPlayerPosition()
-    {
-        Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.position);
-        return playerPosition;
-    }
-
     private void Awake()
     {
         Instance = this;
@@ -39,6 +23,22 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
+    }
+
+    public void Update()
+    {
+        _inputVector = GameInput.Instance.GetMovementVector();
+    }
+
+    public bool IsRunning()
+    {
+        return _isRunning;
+    }
+
+    public Vector3 GetPlayerPosition()
+    {
+        Vector3 playerPosition = Camera.main.WorldToScreenPoint(transform.position);
+        return playerPosition;
     }
 
     private void GameInput_OnPlayerAttack(object sender, EventArgs e)
