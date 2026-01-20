@@ -18,7 +18,6 @@ public class Sword : MonoBehaviour
     private void Start()
     {
         AttackColliderTurnOff();
-        _damageAmount = 2;
     }
 
     public void Attack()

@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkeletonVisual
   _enemyAI: {fileID: 7687162777907215640}
   _enemyEntity: {fileID: 2564244857797858550}
+  _enemyShadow: {fileID: 5014079340184835364}
 --- !u!1 &2125120440023816143
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125120440023816143}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -359,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0065d9757e6098f44b0aeaabc121aced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
-  _maxHealth: 20
+  _maxHealth: 8
 --- !u!1 &5014079340184835364
 GameObject:
   m_ObjectHideFlags: 0

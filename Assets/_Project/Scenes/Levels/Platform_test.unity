@@ -1239,13 +1239,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 2564244857797858550, guid: 9192eddea838000419e6bd759297b45d, type: 3}
+      propertyPath: _enemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a2beaf417f5a554bb4ebb5fcd69743f, type: 2}
+    - target: {fileID: 2564244857797858550, guid: 9192eddea838000419e6bd759297b45d, type: 3}
+      propertyPath: _maxHealth
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9213080972005204992, guid: 9192eddea838000419e6bd759297b45d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.93
+      value: -0.83
       objectReference: {fileID: 0}
     - target: {fileID: 9213080972005204992, guid: 9192eddea838000419e6bd759297b45d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.54
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 9213080972005204992, guid: 9192eddea838000419e6bd759297b45d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1504,6 +1512,10 @@ PrefabInstance:
     - target: {fileID: 6849847266446423820, guid: bde67e9902664244b85a58a392e52da0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896026314104430847, guid: bde67e9902664244b85a58a392e52da0, type: 3}
+      propertyPath: _damageAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
