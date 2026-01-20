@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2007584596, guid: 40a514ec7a02cc24eb0fc92c7ff84fbb, type: 3}
+  m_Sprite: {fileID: 1058622276, guid: d2845bdd45ca45846ae89ce7c6fb6a74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,6 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f262ca506e87e1e429715af773d4f3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkeletonVisual
+  _enemyAI: {fileID: 7687162777907215640}
+  _enemyEntity: {fileID: 2564244857797858550}
+  _enemyShadow: {fileID: 5014079340184835364}
 --- !u!1 &2125120440023816143
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +143,7 @@ GameObject:
   - component: {fileID: 5604388778090302334}
   - component: {fileID: 3199426763290017675}
   - component: {fileID: 2461901873458616437}
+  - component: {fileID: 5872778423969826200}
   - component: {fileID: 7687162777907215640}
   - component: {fileID: 2564244857797858550}
   m_Layer: 0
@@ -173,7 +177,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125120440023816143}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -222,7 +226,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -260,6 +264,68 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!60 &5872778423969826200
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125120440023816143}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 4.6709867, y: 2.6340773}
+      - {x: 4.075462, y: 3.3172312}
+      - {x: 3.2177165, y: 3.636575}
+      - {x: 1.6626198, y: 3.6912916}
+      - {x: 3.1897414, y: 3.2303002}
+      - {x: 3.382477, y: 2.9103832}
+      - {x: 3.430531, y: 2.5127473}
+      - {x: 2.830973, y: 2.0261834}
+      - {x: 1.4688113, y: 1.8311464}
+      - {x: 0.089576185, y: 1.5051466}
+      - {x: 1.7925122, y: 0.97321594}
+      - {x: 2.7049346, y: 0.9851774}
+      - {x: 3.2487206, y: 1.0927172}
+      - {x: 4.1059446, y: 1.4661499}
+      - {x: 4.671019, y: 2.043405}
+  m_UseDelaunayMesh: 1
 --- !u!114 &7687162777907215640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,12 +338,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4d62bc1f149094cb0bc4506d7571a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAi
-  _startingState: 0
+  _startingState: 1
   _roamingDistanceMax: 7
   _roamingDistanceMin: 3
-  _roamingTimerMax: 2
-  _isChasing: 0
-  _isAttackingEnemy: 0
+  _roamingTimerMax: 5
+  _isChasingEnemy: 1
+  _chasingDistance: 4
+  _chasingSpeedMultiplier: 2
+  _isAttackingEnemy: 1
+  _attackingDistance: 2
+  _attackRate: 1
 --- !u!114 &2564244857797858550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0065d9757e6098f44b0aeaabc121aced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
-  _maxHealth: 20
+  _maxHealth: 8
 --- !u!1 &5014079340184835364
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class SwordSlashVisual : MonoBehaviour
 {
     [SerializeField] private Sword sword;
@@ -15,6 +16,11 @@ public class SwordSlashVisual : MonoBehaviour
     private void Start()
     {
         sword.OnSwordSwing += Sword_OnSwordSwing;
+    }
+
+    private void OnDestroy()
+    {
+        sword.OnSwordSwing -= Sword_OnSwordSwing;
     }
 
     private void Sword_OnSwordSwing(object sender, System.EventArgs e)

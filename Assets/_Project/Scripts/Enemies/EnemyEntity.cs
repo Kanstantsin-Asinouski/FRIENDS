@@ -1,27 +1,65 @@
+using System;
 using UnityEngine;
 
+[RequireComponent (typeof(PolygonCollider2D))]
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(EnemyAi))]
 public class EnemyEntity : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth;
+    [SerializeField] private EnemySO _enemySO;
     private int _currentHealth;
 
-    public void TakeDamage(int damage)
-    {
-        _currentHealth -= damage;
+    private PolygonCollider2D _polygonCollider2D;
+    private BoxCollider2D _boxCollider2D;
+    private EnemyAi _enemyAi;
 
-        DetectDeath();
+    public event EventHandler OnTakeHit;
+    public event EventHandler OnDeath;
+
+    private void Awake()
+    {
+        _polygonCollider2D = GetComponent<PolygonCollider2D>();
+        _boxCollider2D = GetComponent<BoxCollider2D>();
+        _enemyAi = GetComponent<EnemyAi>();
     }
 
     private void Start()
     {
-        _currentHealth = _maxHealth;
+        _currentHealth = _enemySO.enemyHealth;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Attack");
+    }
+
+    public void AttackColliderTurnOff()
+    {
+        _polygonCollider2D.enabled = false;
+    }
+
+    public void AttackColliderTurnOn()
+    {
+        _polygonCollider2D.enabled = true;
+    }    
+
+    public void TakeDamage(int damage)
+    {
+        _currentHealth -= damage;
+        OnTakeHit?.Invoke(this, EventArgs.Empty);
+        DetectDeath();
     }
 
     private void DetectDeath()
     {
         if (_currentHealth <= 0)
         {
-            Destroy(gameObject);
+            _boxCollider2D.enabled = false;
+            _polygonCollider2D.enabled = false;
+
+            _enemyAi.SetDeathState();
+
+            OnDeath?.Invoke(this, EventArgs.Empty);
         }
     }
 }

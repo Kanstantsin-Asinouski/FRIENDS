@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using Friends.Utils;
 using System;
@@ -35,20 +35,7 @@ public class EnemyAi : MonoBehaviour
 
     public event EventHandler OnEnemyAttack;
 
-    public bool IsRunning
-    {
-        get
-        {
-            if (_navMeshAgent.velocity == Vector3.zero)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-    }
+    public bool IsRunning => _navMeshAgent.velocity.sqrMagnitude > 0.0001f;
 
     public float GetRoamingAnimationSpeed
     {
@@ -75,12 +62,20 @@ public class EnemyAi : MonoBehaviour
 
         _roamingSpeed = _navMeshAgent.speed;
         _chasingSpeed = _navMeshAgent.speed * _chasingSpeedMultiplier;
+
+        _navMeshAgent.stoppingDistance = _attackingDistance * 0.9f;
     }
 
     private void Update()
     {
         StateHandler();
         MovementDirectionHandler();
+    }
+
+    public void SetDeathState()
+    {
+        _navMeshAgent.ResetPath();
+        _currentState = State.Death;
     }
 
     private void StateHandler()
@@ -116,6 +111,7 @@ public class EnemyAi : MonoBehaviour
 
                 break;
             case State.Death:
+                SetDeathState();
                 break;
         }
     }
@@ -133,20 +129,26 @@ public class EnemyAi : MonoBehaviour
     {
         if (Time.time > _nextCheckDirectionTime)
         {
-            if (IsRunning)
-            {
-                ChangeFacingDirection(_lastPosition, transform.position);
-            }
-            else if (_currentState == State.Attacking)
+            if (_currentState == State.Attacking)
             {
                 ChangeFacingDirection(transform.position, Player.Instance.transform.position);
             }
+            else
+            {
+                var v = _navMeshAgent.desiredVelocity;
+                if (v.sqrMagnitude > 0.0001f)
+                {
+                    if (v.x < 0)
+                        transform.rotation = Quaternion.Euler(0, -180, 0);
+                    else
+                        transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
 
-            _lastPosition = transform.position;
             _nextCheckDirectionTime = Time.time + _nextDirectionDuration;
-
         }
     }
+
 
     private void CheckCurrentState()
     {
@@ -174,22 +176,26 @@ public class EnemyAi : MonoBehaviour
         {
             if (newState == State.Chasing)
             {
+                _navMeshAgent.isStopped = false;
                 _navMeshAgent.ResetPath();
                 _navMeshAgent.speed = _chasingSpeed;
             }
             else if (newState == State.Roaming)
             {
+                _navMeshAgent.isStopped = false;
                 _roamingTimer = 0f;
                 _navMeshAgent.speed = _roamingSpeed;
             }
-            else if (_currentState == State.Attacking)
+            else if (newState == State.Attacking)
             {
                 _navMeshAgent.ResetPath();
-
+                _navMeshAgent.isStopped = true;
+                _navMeshAgent.velocity = Vector3.zero;
             }
 
             _currentState = newState;
         }
+
     }
 
     private void ChasingTarget()
