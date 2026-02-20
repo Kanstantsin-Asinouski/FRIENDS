@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
+    public event EventHandler OnPlayerDeath; 
+
     [SerializeField] private float _movingSpeed = 5f;
     [SerializeField] private int _maxHealth = 10;
     [SerializeField] private float _damageRecoveryTime = 0.5f;
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
 
     private readonly float _minMovingSpeed = 0.1f;
     private bool _canTakeDamage;
+    private bool _isAlive;
     private int _currentHealth;
     private bool _isRunning;
     private Vector2 _inputVector;
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
     {
         _currentHealth = _maxHealth;
         _canTakeDamage = true;
+        _isAlive = true;
         _isRunning = false;
         GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
     }
@@ -50,9 +54,11 @@ public class Player : MonoBehaviour
         HandleMovement();
     }
 
+    public bool IsAlive => _isAlive;
+
     public void TakeDamage(Transform damageSource, int damage)
     {
-        if (_canTakeDamage)
+        if (_canTakeDamage && _isAlive)
         {
             _canTakeDamage = false;
             _currentHealth = Mathf.Max(0, _currentHealth -= damage);
@@ -61,9 +67,9 @@ public class Player : MonoBehaviour
 
             StartCoroutine(DamageRecoveryRoutine());
         }
+
+        DetectDamage();
     }
-
-
 
     public bool IsRunning()
     {
@@ -99,5 +105,17 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(_damageRecoveryTime);
         _canTakeDamage = true;
+    }
+
+    private void DetectDamage()
+    {
+        if (_currentHealth == 0 && _isAlive)
+        {
+            _isAlive = false;
+            _knockBack.StopKnockBackMovement();
+            GameInput.Instance.DisableMovement();
+
+            OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
