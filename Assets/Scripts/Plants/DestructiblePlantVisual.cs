@@ -1,27 +1,30 @@
 using UnityEngine;
 
-public class DestructiblePlantVisual : MonoBehaviour
+namespace Assets.Scripts.Plants
 {
-    [SerializeField] private DestructiblePlant _destructiblePlant;
-    [SerializeField] private GameObject _bushDeathVFXPrefab;
-
-    private void Start()
+    public class DestructiblePlantVisual : MonoBehaviour
     {
-        _destructiblePlant.OnDesctrictibleTakenDamage += DesctrictiblePlant_OnDestructibleTakenDamage;
-    }
+        [SerializeField] private DestructiblePlant destructiblePlant;
+        [SerializeField] private GameObject bushDeathVFXPrefab;
 
-    private void OnDestroy()
-    {
-        _destructiblePlant.OnDesctrictibleTakenDamage -= DesctrictiblePlant_OnDestructibleTakenDamage;
-    }
+        private void Start()
+        {
+            destructiblePlant.OnDesctrictibleTakenDamage += DesctrictiblePlant_OnDestructibleTakenDamage;
+        }
 
-    private void DesctrictiblePlant_OnDestructibleTakenDamage(object sender, System.EventArgs e)
-    {
-        ShowDeathVFX();
-    }
+        private void OnDestroy()
+        {
+            destructiblePlant.OnDesctrictibleTakenDamage -= DesctrictiblePlant_OnDestructibleTakenDamage;
+        }
 
-    private void ShowDeathVFX()
-    {
-        Instantiate(_bushDeathVFXPrefab, transform.transform.position, Quaternion.identity);
+        private void DesctrictiblePlant_OnDestructibleTakenDamage(object sender, System.EventArgs e)
+        {
+            ShowDeathVFX();
+        }
+
+        private void ShowDeathVFX()
+        {
+            Instantiate(bushDeathVFXPrefab, transform.transform.position, Quaternion.identity);
+        }
     }
 }
