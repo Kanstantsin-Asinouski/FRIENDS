@@ -1,17 +1,14 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Utilities
+public class ConsoleInfo: MonoBehaviour
 {
-    public class ConsoleInfo : MonoBehaviour
+    private void Update()
     {
-        private void Update()
-        {
-            PrintConsole();
-        }
+        PrintConsole();
+    }
 
-        private void PrintConsole()
-        {
-            Debug.Log("Hello World!");
-        }
+    private void PrintConsole()
+    {
+        Debug.Log("Hello World!");
     }
 }

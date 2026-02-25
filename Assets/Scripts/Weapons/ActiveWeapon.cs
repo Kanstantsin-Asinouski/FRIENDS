@@ -1,36 +1,39 @@
-using Assets.Scripts.Game;
 using UnityEngine;
 
-namespace Assets.Scripts.Weapons
+public class ActiveWeapon : MonoBehaviour
 {
-    public class ActiveWeapon : MonoBehaviour
+    [SerializeField] private Sword _sword;
+
+    public static ActiveWeapon Instance { get; private set; }
+
+    private void Awake()
     {
-        [SerializeField] private Sword.Sword sword;
+        Instance = this;
+    }
 
-        public static ActiveWeapon Instance { get; private set; }
+    private void Update()
+    {
+        if (Player.Instance.IsAlive)
+            FollowMousePosition();
+    }
 
-        private void Awake()
+    public Sword GetActiveWeapon()
+    {
+        return _sword;
+    }
+
+    private void FollowMousePosition()
+    {
+        Vector3 mousePosition = GameInput.Instance.GetMousePosition();
+        Vector3 playerPosition = Player.Instance.GetPlayerPosition();
+
+        if (mousePosition.x < playerPosition.x)
         {
-            Instance = this;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-
-        private void Update()
+        else
         {
-            if (Player.Player.Instance.IsAlive)
-                FollowMousePosition();
-        }
-
-        public Sword.Sword GetActiveWeapon()
-        {
-            return sword;
-        }
-
-        private void FollowMousePosition()
-        {
-            Vector3 mousePosition = GameInput.Instance.GetMousePosition();
-            Vector3 playerPosition = Player.Player.Instance.GetPlayerPosition();
-
-            transform.rotation = Quaternion.Euler(0, mousePosition.x < playerPosition.x ? 180 : 0, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }

@@ -2,51 +2,48 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Assets.Scripts.Game
+public class GameInput : MonoBehaviour
 {
-    public class GameInput : MonoBehaviour
+    private PlayerInputActions _playerInputActions;
+
+    public static GameInput Instance { get; private set; }
+
+    public event EventHandler OnPlayerAttack;
+
+    private void Awake()
     {
-        private PlayerInputActions _playerInputActions;
+        Instance = this;
 
-        public static GameInput Instance { get; private set; }
+        _playerInputActions = new PlayerInputActions();
+        _playerInputActions.Enable();
 
-        public event EventHandler OnPlayerAttack;
+        _playerInputActions.Combat.Attack.started += Player_AttackStarted;
+    }
 
-        private void Awake()
-        {
-            Instance = this;
+    private void OnDestroy()
+    {
+        _playerInputActions.Combat.Attack.started -= Player_AttackStarted;
+        _playerInputActions.Disable();
+    }
 
-            _playerInputActions = new PlayerInputActions();
-            _playerInputActions.Enable();
+    public Vector2 GetMovementVector()
+    {
+        return _playerInputActions.Player.Move.ReadValue<Vector2>();
+    }
 
-            _playerInputActions.Combat.Attack.started += Player_AttackStarted;
-        }
+    public Vector3 GetMousePosition()
+    {
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+        return mousePos;
+    }
 
-        private void OnDestroy()
-        {
-            _playerInputActions.Combat.Attack.started -= Player_AttackStarted;
-            _playerInputActions.Disable();
-        }
+    public void DisableMovement()
+    {
+        _playerInputActions.Disable();
+    }
 
-        public Vector2 GetMovementVector()
-        {
-            return _playerInputActions.Player.Move.ReadValue<Vector2>();
-        }
-
-        public Vector3 GetMousePosition()
-        {
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            return mousePos;
-        }
-
-        public void DisableMovement()
-        {
-            _playerInputActions.Disable();
-        }
-
-        private void Player_AttackStarted(InputAction.CallbackContext obj)
-        {
-            OnPlayerAttack?.Invoke(this, EventArgs.Empty);
-        }
+    private void Player_AttackStarted(InputAction.CallbackContext obj)
+    {
+        OnPlayerAttack?.Invoke(this, EventArgs.Empty);
     }
 }

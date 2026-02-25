@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Utilities
+namespace Friends.Utils
 {
     public static class FriendsUtils
     {
