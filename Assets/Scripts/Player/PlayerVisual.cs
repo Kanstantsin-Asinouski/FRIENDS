@@ -11,9 +11,6 @@ namespace Assets.Scripts.Player
         private SpriteRenderer _spriteRenderer;
         private FlashBlink _flashBlink;
 
-        private static readonly int DieHash = Animator.StringToHash(IsDie);
-        private static readonly int RunningHash = Animator.StringToHash(IsRunning);
-
         private const string IsRunning = "IsRunning";
         private const string IsDie = "IsDie";
 
@@ -36,13 +33,13 @@ namespace Assets.Scripts.Player
 
         private void Player_OnPlayerDeath(object sender, System.EventArgs e)
         {
-            _animator.SetBool(DieHash, true);
+            _animator.SetBool(IsDie, true);
             _flashBlink.StopBlinking();
         }
 
         private void Update()
         {
-            _animator.SetBool(RunningHash, Player.Instance.IsRunning());
+            _animator.SetBool(IsRunning, Player.Instance.IsRunning());
 
             if (Player.Instance.IsAlive)
                 AdjustPlayerFacingDirection();
@@ -53,7 +50,14 @@ namespace Assets.Scripts.Player
             Vector3 mousePosition = GameInput.Instance.GetMousePosition();
             Vector3 playerPosition = Player.Instance.GetPlayerPosition();
 
-            _spriteRenderer.flipX = mousePosition.x < playerPosition.x;
+            if (mousePosition.x < playerPosition.x)
+            {
+                _spriteRenderer.flipX = true;
+            }
+            else
+            {
+                _spriteRenderer.flipX = false;
+            }
         }
     }
 }

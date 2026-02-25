@@ -32,7 +32,7 @@ namespace Assets.Scripts.Enemies
         private float _chasingSpeed;
 
         private float _nextCheckDirectionTime = 0f;
-        private readonly float _nextDirectionDuration = 0.1f;
+        private float _nextDirectionDuration = 0.1f;
 
         public event EventHandler OnEnemyAttack;
 
@@ -161,7 +161,14 @@ namespace Assets.Scripts.Enemies
             {
                 if (distanceToPlayer <= chasingDistance)
                 {
-                    newState = Player.Player.Instance.IsAlive ? State.Chasing : State.Roaming;
+                    if (Player.Player.Instance.IsAlive)
+                    {
+                        newState = State.Attacking;
+                    }
+                    else
+                    {
+                        newState = State.Roaming;
+                    }
                 }
             }
 
@@ -218,9 +225,14 @@ namespace Assets.Scripts.Enemies
 
         private void ChangeFacingDirection(Vector3 sourcePosition, Vector3 targetPosition)
         {
-            transform.rotation = sourcePosition.x > targetPosition.x 
-                ? Quaternion.Euler(0, -180, 0) 
-                : Quaternion.Euler(0, 0, 0);
+            if (sourcePosition.x > targetPosition.x)
+            {
+                transform.rotation = Quaternion.Euler(0, -180, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
     }
 }

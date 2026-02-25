@@ -14,12 +14,6 @@ namespace Assets.Scripts.Enemies.Skeleton
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
 
-        private static readonly int DieHash = Animator.StringToHash(IsDie);
-        private static readonly int TakeHitHash = Animator.StringToHash(TakeHit);
-        private static readonly int RunningHash = Animator.StringToHash(IsRunning);
-        private static readonly int SpeedMultiplierHash = Animator.StringToHash(ChasingSpeedMultiplier);
-        private static readonly int AttackHash = Animator.StringToHash(Attack);
-
         private const string IsRunning = "IsRunning";
         private const string IsDie = "IsDie";
         private const string TakeHit = "TakeHit";
@@ -34,22 +28,22 @@ namespace Assets.Scripts.Enemies.Skeleton
 
         private void Start()
         {
-            enemyAI.OnEnemyAttack += EnemyAI_OnEnemyAttack;
-            enemyEntity.OnTakeHit += EnemyEntity_OnTakeHit;
-            enemyEntity.OnDeath += EnemyEntity_OnDeath;
+            enemyAI.OnEnemyAttack += _enemyAI_OnEnemyAttack;
+            enemyEntity.OnTakeHit += _enemyEntity_OnTakeHit;
+            enemyEntity.OnDeath += _enemyEntity_OnDeath;
         }
 
         private void OnDestroy()
         {
-            enemyAI.OnEnemyAttack -= EnemyAI_OnEnemyAttack;
-            enemyEntity.OnTakeHit -= EnemyEntity_OnTakeHit;
-            enemyEntity.OnDeath -= EnemyEntity_OnDeath;
+            enemyAI.OnEnemyAttack -= _enemyAI_OnEnemyAttack;
+            enemyEntity.OnTakeHit -= _enemyEntity_OnTakeHit;
+            enemyEntity.OnDeath -= _enemyEntity_OnDeath;
         }
 
         private void Update()
         {
-            _animator.SetBool(RunningHash, enemyAI.IsRunning);
-            _animator.SetFloat(SpeedMultiplierHash, enemyAI.GetRoamingAnimationSpeed);
+            _animator.SetBool(IsRunning, enemyAI.IsRunning);
+            _animator.SetFloat(ChasingSpeedMultiplier, enemyAI.GetRoamingAnimationSpeed);
         }
 
         public void TriggerAttackAnimationTurnOff()
@@ -62,18 +56,18 @@ namespace Assets.Scripts.Enemies.Skeleton
             enemyEntity.AttackColliderTurnOn();
         }
 
-        private void EnemyAI_OnEnemyAttack(object sender, EventArgs e)
+        private void _enemyAI_OnEnemyAttack(object sender, EventArgs e)
         {
-            _animator.SetTrigger(AttackHash);
+            _animator.SetTrigger(Attack);
         }
-        private void EnemyEntity_OnTakeHit(object sender, EventArgs e)
+        private void _enemyEntity_OnTakeHit(object sender, EventArgs e)
         {
-            _animator.SetTrigger(TakeHitHash);
+            _animator.SetTrigger(TakeHit);
         }
 
-        private void EnemyEntity_OnDeath(object sender, EventArgs e)
+        private void _enemyEntity_OnDeath(object sender, EventArgs e)
         {
-            _animator.SetBool(DieHash, true);
+            _animator.SetBool(IsDie, true);
             _spriteRenderer.sortingLayerID = 0;
             enemyShadow.SetActive(false);
         }
