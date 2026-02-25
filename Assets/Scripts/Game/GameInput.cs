@@ -33,9 +33,9 @@ namespace Assets.Scripts.Game
             return _playerInputActions.Player.Move.ReadValue<Vector2>();
         }
 
-        public Vector2 GetMousePosition()
+        public Vector3 GetMousePosition()
         {
-            Vector2 mousePos = Mouse.current.position.ReadValue();
+            Vector3 mousePos = Mouse.current.position.ReadValue();
             return mousePos;
         }
 
