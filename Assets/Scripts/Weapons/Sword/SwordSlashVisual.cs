@@ -7,15 +7,12 @@ namespace Assets.Scripts.Weapons.Sword
     {
         [SerializeField] private Sword sword;
 
-        private Animator _animator;
-
-        private static readonly int AttackHash = Animator.StringToHash(Attack);
-
+        private Animator animator;
         private const string Attack = "Attack";
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>();
         }
 
         private void Start()
@@ -30,7 +27,7 @@ namespace Assets.Scripts.Weapons.Sword
 
         private void Sword_OnSwordSwing(object sender, System.EventArgs e)
         {
-            _animator.SetTrigger(AttackHash);
+            animator.SetTrigger(Attack);
         }
     }
 }
