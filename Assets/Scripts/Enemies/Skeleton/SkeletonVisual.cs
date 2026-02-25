@@ -1,81 +1,70 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Enemies.Skeleton
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
+public class SkeletonVisual : MonoBehaviour
 {
-    [RequireComponent(typeof(Animator))]
-    [RequireComponent(typeof(SpriteRenderer))]
-    public class SkeletonVisual : MonoBehaviour
+    [SerializeField] private EnemyAi _enemyAI;
+    [SerializeField] private EnemyEntity _enemyEntity;
+    [SerializeField] private GameObject _enemyShadow;
+
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
+
+    private const string _IS_RUNNING = "IsRunning";
+    private const string _IS_DIE = "IsDie";
+    private const string _TAKE_HIT = "TakeHit";
+    private const string _CHASING_SPEED_MULTUPLIER = "ChasingSpeedMultiplier";
+    private const string _ATTACK = "Attack";
+
+    private void Awake()
     {
-        [SerializeField] private EnemyAi enemyAI;
-        [SerializeField] private EnemyEntity enemyEntity;
-        [SerializeField] private GameObject enemyShadow;
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();   
+    }
 
-        private Animator _animator;
-        private SpriteRenderer _spriteRenderer;
+    private void Start()
+    {
+        _enemyAI.OnEnemyAttack += _enemyAI_OnEnemyAttack;
+        _enemyEntity.OnTakeHit += _enemyEntity_OnTakeHit;
+        _enemyEntity.OnDeath += _enemyEntity_OnDeath;
+    }
 
-        private static readonly int DieHash = Animator.StringToHash(IsDie);
-        private static readonly int TakeHitHash = Animator.StringToHash(TakeHit);
-        private static readonly int RunningHash = Animator.StringToHash(IsRunning);
-        private static readonly int SpeedMultiplierHash = Animator.StringToHash(ChasingSpeedMultiplier);
-        private static readonly int AttackHash = Animator.StringToHash(Attack);
+    private void OnDestroy()
+    {
+        _enemyAI.OnEnemyAttack -= _enemyAI_OnEnemyAttack;
+    }
 
-        private const string IsRunning = "IsRunning";
-        private const string IsDie = "IsDie";
-        private const string TakeHit = "TakeHit";
-        private const string ChasingSpeedMultiplier = "ChasingSpeedMultiplier";
-        private const string Attack = "Attack";
+    private void Update()
+    {
+        _animator.SetBool(_IS_RUNNING, _enemyAI.IsRunning);
+        _animator.SetFloat(_CHASING_SPEED_MULTUPLIER, _enemyAI.GetRoamingAnimationSpeed);
+    }
+    
+    public void TriggerAttackAnimationTurnOff()
+    {
+        _enemyEntity.AttackColliderTurnOff();
+    }
 
-        private void Awake()
-        {
-            _animator = GetComponent<Animator>();
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-        }
+    public void TriggerAttackAnimationTurnOn()
+    {
+        _enemyEntity.AttackColliderTurnOn();
+    }
 
-        private void Start()
-        {
-            enemyAI.OnEnemyAttack += EnemyAI_OnEnemyAttack;
-            enemyEntity.OnTakeHit += EnemyEntity_OnTakeHit;
-            enemyEntity.OnDeath += EnemyEntity_OnDeath;
-        }
+    private void _enemyAI_OnEnemyAttack(object sender, EventArgs e)
+    {
+        _animator.SetTrigger(_ATTACK); 
+    }
+    private void _enemyEntity_OnTakeHit(object sender, EventArgs e)
+    {
+        _animator.SetTrigger(_TAKE_HIT);
+    }
 
-        private void OnDestroy()
-        {
-            enemyAI.OnEnemyAttack -= EnemyAI_OnEnemyAttack;
-            enemyEntity.OnTakeHit -= EnemyEntity_OnTakeHit;
-            enemyEntity.OnDeath -= EnemyEntity_OnDeath;
-        }
-
-        private void Update()
-        {
-            _animator.SetBool(RunningHash, enemyAI.IsRunning);
-            _animator.SetFloat(SpeedMultiplierHash, enemyAI.GetRoamingAnimationSpeed);
-        }
-
-        public void TriggerAttackAnimationTurnOff()
-        {
-            enemyEntity.AttackColliderTurnOff();
-        }
-
-        public void TriggerAttackAnimationTurnOn()
-        {
-            enemyEntity.AttackColliderTurnOn();
-        }
-
-        private void EnemyAI_OnEnemyAttack(object sender, EventArgs e)
-        {
-            _animator.SetTrigger(AttackHash);
-        }
-        private void EnemyEntity_OnTakeHit(object sender, EventArgs e)
-        {
-            _animator.SetTrigger(TakeHitHash);
-        }
-
-        private void EnemyEntity_OnDeath(object sender, EventArgs e)
-        {
-            _animator.SetBool(DieHash, true);
-            _spriteRenderer.sortingLayerID = 0;
-            enemyShadow.SetActive(false);
-        }
+    private void _enemyEntity_OnDeath(object sender, EventArgs e)
+    {
+        _animator.SetBool(_IS_DIE, true);
+        _spriteRenderer.sortingLayerID = 0;
+        _enemyShadow.SetActive(false);
     }
 }

@@ -1,56 +1,53 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.Game
+[RequireComponent (typeof(Rigidbody2D))]
+public class KnockBack : MonoBehaviour
 {
-    [RequireComponent(typeof(Rigidbody2D))]
-    public class KnockBack : MonoBehaviour
+    [SerializeField] private float _knockBackForce;
+    [SerializeField] private float _knockBackMovingTimeMax;
+
+    private Rigidbody2D _rb;    
+
+    private float _knockBackMovingTimeTimer;
+
+    public bool IsGettingKnockBack { get; private set; }
+
+    private void Start()
     {
-        [SerializeField] private float knockBackForce;
-        [SerializeField] private float knockBackMovingTimeMax;
+        _knockBackForce = 3f;
+        _knockBackMovingTimeMax = 0.3f;
+    }
 
-        private Rigidbody2D _rb;
+    private void Awake()
+    {        
+        _rb = GetComponent<Rigidbody2D>();
+    }
 
-        private float _knockBackMovingTimeTimer;
+    private void Update()
+    {
+        if (!IsGettingKnockBack) 
+            return;
 
-        public bool IsGettingKnockBack { get; private set; }
+        _knockBackMovingTimeTimer -= Time.deltaTime;
 
-        private void Start()
+        if (_knockBackMovingTimeTimer < 0)
         {
-            knockBackForce = 3f;
-            knockBackMovingTimeMax = 0.3f;
+            StopKnockBackMovement();
         }
+    }
 
-        private void Awake()
-        {
-            _rb = GetComponent<Rigidbody2D>();
-        }
+    public void GetKnockedBack(Transform damageSource)
+    {
+        IsGettingKnockBack = true;
+        _knockBackMovingTimeTimer = _knockBackMovingTimeMax;
+        Vector2 difference = (transform.position - damageSource.position).normalized * _knockBackForce;
+        _rb.AddForce(difference, ForceMode2D.Impulse);
+    }
 
-        private void Update()
-        {
-            if (!IsGettingKnockBack)
-                return;
-
-            _knockBackMovingTimeTimer -= Time.deltaTime;
-
-            if (_knockBackMovingTimeTimer < 0)
-            {
-                StopKnockBackMovement();
-            }
-        }
-
-        public void GetKnockedBack(Transform damageSource)
-        {
-            IsGettingKnockBack = true;
-            _knockBackMovingTimeTimer = knockBackMovingTimeMax;
-            Vector2 difference = (transform.position - damageSource.position).normalized * knockBackForce;
-            _rb.AddForce(difference, ForceMode2D.Impulse);
-        }
-
-        public void StopKnockBackMovement()
-        {
-            _rb.linearVelocity = Vector2.zero;
-            IsGettingKnockBack = false;
-        }
+    public void StopKnockBackMovement()
+    {
+        _rb.linearVelocity = Vector2.zero;
+        IsGettingKnockBack = false;
     }
 }

@@ -1,36 +1,30 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Weapons.Sword
+[RequireComponent(typeof(Animator))]
+public class SwordSlashVisual : MonoBehaviour
 {
-    [RequireComponent(typeof(Animator))]
-    public class SwordSlashVisual : MonoBehaviour
+    [SerializeField] private Sword sword;
+
+    private Animator animator;
+    private const string ATTACK = "Attack";
+
+    private void Awake()
     {
-        [SerializeField] private Sword sword;
+        animator = GetComponent<Animator>();
+    }
 
-        private Animator _animator;
+    private void Start()
+    {
+        sword.OnSwordSwing += Sword_OnSwordSwing;
+    }
 
-        private static readonly int AttackHash = Animator.StringToHash(Attack);
+    private void OnDestroy()
+    {
+        sword.OnSwordSwing -= Sword_OnSwordSwing;
+    }
 
-        private const string Attack = "Attack";
-
-        private void Awake()
-        {
-            _animator = GetComponent<Animator>();
-        }
-
-        private void Start()
-        {
-            sword.OnSwordSwing += Sword_OnSwordSwing;
-        }
-
-        private void OnDestroy()
-        {
-            sword.OnSwordSwing -= Sword_OnSwordSwing;
-        }
-
-        private void Sword_OnSwordSwing(object sender, System.EventArgs e)
-        {
-            _animator.SetTrigger(AttackHash);
-        }
+    private void Sword_OnSwordSwing(object sender, System.EventArgs e)
+    {
+        animator.SetTrigger(ATTACK);
     }
 }
